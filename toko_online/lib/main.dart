@@ -4,11 +4,11 @@ import 'package:toko_online/pages/sign_up_page.dart';
 import 'package:toko_online/pages/splash_page.dart';
 import 'package:toko_online/pages/sign_in_page.dart';
 
-void main()=>runApp(MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
