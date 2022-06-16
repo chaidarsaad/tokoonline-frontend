@@ -19,14 +19,14 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hallo Bapak Taufiq',
+                    'Hallo, Alex',
                     style: primaryTextStyle.copyWith(
                       fontSize: 24,
                       fontWeight: semiBold,
                     ),
                   ),
                   Text(
-                    '@TaufiqRizaldi',
+                    '@Alex',
                     style: subtitleTextStyle.copyWith(
                       fontSize: 16,
                     ),

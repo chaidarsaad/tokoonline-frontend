@@ -34,117 +34,115 @@ class SignInPage extends StatelessWidget {
 
     Widget emailInput() {
       return Container(
-          // ignore: prefer_const_constructors
-          margin: EdgeInsets.only(top: 70),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Email Address',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium,
-                ),
+        // ignore: prefer_const_constructors
+        margin: EdgeInsets.only(top: 70),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Email Address',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
               ),
+            ),
+            // ignore: prefer_const_constructors
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 50,
               // ignore: prefer_const_constructors
-              SizedBox(
-                height: 12,
+              padding: EdgeInsets.symmetric(
+                horizontal: 16,
               ),
-              Container(
-                height: 50,
-                // ignore: prefer_const_constructors
-                padding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                ),
-                decoration: BoxDecoration(
-                  color: backgroundColor2,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'icon_email.png',
-                        width: 17,
-                      ),
-                      // ignore: prefer_const_constructors
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          style: primaryTextStyle,
-                          decoration: InputDecoration.collapsed(
-                            hintText: 'Your Email Address',
-                            hintStyle: subtitleTextStyle,
-                          ),
+              decoration: BoxDecoration(
+                color: backgroundColor2,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icon_email.png',
+                      width: 17,
+                    ),
+                    // ignore: prefer_const_constructors
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        style: primaryTextStyle,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Your Email Address',
+                          hintStyle: subtitleTextStyle,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ));
+              ),
+            )
+          ],
+        ),
+      );
     }
-
-    ;
 
     Widget passwordInput() {
       return Container(
-          // ignore: prefer_const_constructors
-          margin: EdgeInsets.only(top: 70),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Password',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium,
-                ),
+        // ignore: prefer_const_constructors
+        margin: EdgeInsets.only(top: 30),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Password',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
               ),
-              SizedBox(
-                height: 12,
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 50,
+              padding: EdgeInsets.symmetric(
+                horizontal: 16,
               ),
-              Container(
-                height: 50,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                ),
-                decoration: BoxDecoration(
-                  color: backgroundColor2,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'icon_password.png',
-                        width: 17,
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          style: primaryTextStyle,
-                          obscureText: true,
-                          decoration: InputDecoration.collapsed(
-                            hintText: 'Your Password',
-                            hintStyle: subtitleTextStyle,
-                          ),
+              decoration: BoxDecoration(
+                color: backgroundColor2,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'icon_password.png',
+                      width: 17,
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        style: primaryTextStyle,
+                        obscureText: true,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Your Password',
+                          hintStyle: subtitleTextStyle,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ));
+              ),
+            )
+          ],
+        ),
+      );
     }
-
-    ;
 
     Widget signInButton() {
       return Container(

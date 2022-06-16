@@ -62,7 +62,7 @@ class SignUpPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Image.asset(
-                        'assets/icon_name.png',
+                        'icon_name.png',
                         width: 17,
                       ),
                       SizedBox(
@@ -116,7 +116,7 @@ class SignUpPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Image.asset(
-                        'assets/icon_username.png',
+                        'icon_username.png',
                         width: 17,
                       ),
                       SizedBox(
@@ -170,7 +170,7 @@ class SignUpPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Image.asset(
-                        'assets/icon_email.png',
+                        'icon_email.png',
                         width: 17,
                       ),
                       SizedBox(
@@ -224,7 +224,7 @@ class SignUpPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Image.asset(
-                        'assets/icon_password.png',
+                        'icon_password.png',
                         width: 17,
                       ),
                       SizedBox(

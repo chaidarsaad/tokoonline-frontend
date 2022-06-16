@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:toko_online/theme.dart';
+import 'package:toko_online/widgets/wishlist_card.dart';
 
 class WishListPage extends StatelessWidget {
   @override
@@ -79,10 +80,28 @@ class WishListPage extends StatelessWidget {
       );
     }
 
+    Widget content() {
+      return Expanded(
+          child: Container(
+        color: backgroundColor3,
+        child: ListView(
+          padding: EdgeInsets.symmetric(
+            horizontal: defaultMargin,
+          ),
+          children: [
+            WishlistCard(),
+            WishlistCard(),
+            WishlistCard(),
+          ],
+        ),
+      ));
+    }
+
     return Column(
       children: [
         header(),
-        emptyWishlist(),
+        // emptyWishlist(),
+        content(),
       ],
     );
   }
