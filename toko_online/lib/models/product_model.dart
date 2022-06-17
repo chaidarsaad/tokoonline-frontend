@@ -2,15 +2,15 @@ import 'package:toko_online/models/category_model.dart';
 import 'package:toko_online/models/gallery_model.dart';
 
 class ProductModel {
-  int id;
-  String name;
-  double price;
-  String description;
-  String tags;
-  CategoryModel category;
-  DateTime createdAt;
-  DateTime updateAt;
-  List<GalleryModel> galleries;
+  late int id;
+  late String name;
+  late double price;
+  late String description;
+  late String tags;
+  late CategoryModel category;
+  late DateTime createdAt;
+  late DateTime updateAt;
+  late List<GalleryModel> galleries;
 
   ProductModel({
     required this.id,

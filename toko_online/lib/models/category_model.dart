@@ -1,20 +1,20 @@
 class CategoryModel {
-  int id;
-  String nama;
+  int id = 15;
+  String name = "name";
 
   CategoryModel({
     required this.id,
-    required this.nama,
+    required this.name,
   });
 
   CategoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    nama = json['name'];
+    name = json['name'];
   }
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'nama': nama,
+      'name': name,
     };
   }
 }

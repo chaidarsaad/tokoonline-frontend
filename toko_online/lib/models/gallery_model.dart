@@ -1,6 +1,6 @@
 class GalleryModel {
-  int id;
-  String url;
+  int id = 15;
+  String url = "url";
 
   GalleryModel({
     required this.id,
