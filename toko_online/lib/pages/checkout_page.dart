@@ -250,7 +250,13 @@ class CheckoutPage extends StatelessWidget {
               vertical: defaultMargin,
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(
+                  contex,
+                  '/checkout-success',
+                  (route) => false,
+                );
+              },
               style: TextButton.styleFrom(
                 backgroundColor: priceColor,
                 shape: RoundedRectangleBorder(
