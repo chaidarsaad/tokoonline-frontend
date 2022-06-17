@@ -1,6 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unused_element
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_online/models/user_model.dart';
+import 'package:toko_online/providers/auth_provider.dart';
 import 'package:toko_online/theme.dart';
 import 'package:toko_online/widgets/product_card.dart';
 import 'package:toko_online/widgets/product_tile.dart';
@@ -8,6 +11,9 @@ import 'package:toko_online/widgets/product_tile.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
@@ -19,14 +25,14 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hallo, Alex',
+                    'Hallo, ${user.name}',
                     style: primaryTextStyle.copyWith(
                       fontSize: 24,
                       fontWeight: semiBold,
                     ),
                   ),
                   Text(
-                    '@Alex',
+                    '@${user.username}',
                     style: subtitleTextStyle.copyWith(
                       fontSize: 16,
                     ),
@@ -40,7 +46,9 @@ class HomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage('assets/image_profile.png'),
+                  image: NetworkImage(
+                    user.profilePhotoUrl,
+                  ),
                 ),
               ),
             )

@@ -8,7 +8,7 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  List image = [
+  List images = [
     'assets/image_shoes.png',
     'assets/image_shoes.png',
     'assets/image_shoes.png',
@@ -25,6 +25,7 @@ class _ProductPageState extends State<ProductPage> {
     'assets/image_shoes.png',
     'assets/image_shoes.png',
   ];
+
   int currentIndex = 0;
 
   @override
@@ -84,12 +85,12 @@ class _ProductPageState extends State<ProductPage> {
                 Icon(
                   Icons.shopping_bag,
                   color: backgroundColor1,
-                )
+                ),
               ],
             ),
           ),
           CarouselSlider(
-            items: image
+            items: images
                 .map(
                   (image) => Image.asset(
                     image,
@@ -100,19 +101,20 @@ class _ProductPageState extends State<ProductPage> {
                 )
                 .toList(),
             options: CarouselOptions(
-                initialPage: 0,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    currentIndex = index;
-                  });
-                }),
+              initialPage: 0,
+              onPageChanged: (index, reason) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
+            ),
           ),
           SizedBox(
             height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: image.map((e) {
+            children: images.map((e) {
               index++;
               return indicator(index);
             }).toList(),
@@ -156,7 +158,7 @@ class _ProductPageState extends State<ProductPage> {
                           ),
                         ),
                         Text(
-                          'Hiking',
+                          'Hikking',
                           style: secondaryTextStyle.copyWith(
                             fontSize: 12,
                           ),
@@ -167,12 +169,12 @@ class _ProductPageState extends State<ProductPage> {
                   Image.asset(
                     'assets/button_wishlist.png',
                     width: 46,
-                  )
+                  ),
                 ],
               ),
             ),
 
-            // NOTE: PRICE
+            //NOTE: PRICE
             Container(
               width: double.infinity,
               margin: EdgeInsets.only(
@@ -203,7 +205,7 @@ class _ProductPageState extends State<ProductPage> {
               ),
             ),
 
-            // NOTE: DESCRIPTION
+            //NOTE: DESCRIPTION
             Container(
               width: double.infinity,
               margin: EdgeInsets.only(
@@ -224,7 +226,7 @@ class _ProductPageState extends State<ProductPage> {
                     height: 12,
                   ),
                   Text(
-                    'Unpaved trails and mixed surfaces are easy when you have the traction and support you need. Casual enough for the daily commute.',
+                    'Unpaved trails and mixed surfaces are easy when you have the traction and support you need casual anough for the daily commute',
                     style: subtitleTextStyle.copyWith(
                       fontWeight: light,
                     ),
@@ -234,7 +236,7 @@ class _ProductPageState extends State<ProductPage> {
               ),
             ),
 
-            // NOTE: FAMILIAR SHOES
+            //NOTE: FAMILIAR SHOES
             Container(
               width: double.infinity,
               margin: EdgeInsets.only(
@@ -244,7 +246,9 @@ class _ProductPageState extends State<ProductPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: defaultMargin,
+                    ),
                     child: Text(
                       'Fimiliar Shoes',
                       style: primaryTextStyle.copyWith(
@@ -258,18 +262,16 @@ class _ProductPageState extends State<ProductPage> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: familiarShoes.map(
-                        (image) {
-                          index++;
-                          return Container(
-                            margin: EdgeInsets.only(
-                                left: index == 0 ? defaultMargin : 0),
-                            child: familiarShoesCard(image),
-                          );
-                        },
-                      ).toList(),
+                      children: familiarShoes.map((image) {
+                        index++;
+                        return Container(
+                          margin: EdgeInsets.only(
+                              left: index == 0 ? defaultMargin : 0),
+                          child: familiarShoesCard(image),
+                        );
+                      }).toList(),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -317,7 +319,7 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                 ],
               ),
-            ),
+            )
           ],
         ),
       );

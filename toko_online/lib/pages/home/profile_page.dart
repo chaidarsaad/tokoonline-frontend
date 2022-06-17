@@ -1,11 +1,17 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_online/models/user_model.dart';
+import 'package:toko_online/providers/auth_provider.dart';
 import 'package:toko_online/theme.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
     Widget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -19,8 +25,8 @@ class ProfilePage extends StatelessWidget {
             child: Row(
               children: [
                 ClipOval(
-                  child: Image.asset(
-                    'image_profile.png',
+                  child: Image.network(
+                    user.profilePhotoUrl,
                     width: 64,
                   ),
                 ),
@@ -32,13 +38,13 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Hallo, Alex',
+                        'Hallo, ${user.name}',
                         style: primaryTextStyle.copyWith(
                           fontWeight: semiBold,
                         ),
                       ),
                       Text(
-                        '@Alex',
+                        '@${user.username}',
                         style: subtitleTextStyle.copyWith(
                           fontSize: 16,
                         ),
