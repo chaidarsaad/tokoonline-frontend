@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'dart:html';
-
 import 'package:toko_online/models/user_model.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
-  String baseUrl = 'https://tokoonline-backend.test/api';
+  String baseUrl = 'http://tokosepatu-backend.test/api';
 
   Future<UserModel> register({
     required String name,
@@ -14,7 +12,7 @@ class AuthService {
     required String password,
   }) async {
     var url = '$baseUrl/register';
-    var header = {'Content-Type': 'appLication/json'};
+    var headers = {'Content-Type': 'appLication/json'};
     var body = jsonEncode({
       'name': name,
       'username': username,
@@ -23,7 +21,7 @@ class AuthService {
     });
 
     var response = await http.post(
-      url,
+      Uri.parse("http://tokosepatu-backend.test/api/register"),
       headers: headers,
       body: body,
     );
@@ -53,8 +51,8 @@ class AuthService {
     });
 
     var response = await http.post(
-      url,
-      headers: headers,
+      Uri.parse("http://tokosepatu-backend.test/api/login"),
+      headers: header,
       body: body,
     );
 
