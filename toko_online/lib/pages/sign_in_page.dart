@@ -162,7 +162,7 @@ class _SignInPageState extends State<SignInPage> {
                 child: Row(
                   children: [
                     Image.asset(
-                      'icon_password.png',
+                      'assets/icon_password.png',
                       width: 17,
                     ),
                     SizedBox(

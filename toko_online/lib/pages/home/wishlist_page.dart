@@ -1,12 +1,17 @@
 // ignore_for_file: use_key_in_widget_constructors, unnecessary_const
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_online/providers/wishlist_provider.dart';
 import 'package:toko_online/theme.dart';
 import 'package:toko_online/widgets/wishlist_card.dart';
 
 class WishListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
+
     Widget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -88,11 +93,11 @@ class WishListPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: defaultMargin,
           ),
-          children: [
-            WishlistCard(),
-            WishlistCard(),
-            WishlistCard(),
-          ],
+          children: wishlistProvider.wishlist
+              .map(
+                (product) => WishlistCard(product),
+              )
+              .toList(),
         ),
       ));
     }
@@ -101,7 +106,7 @@ class WishListPage extends StatelessWidget {
       children: [
         header(),
         // emptyWishlist(),
-        content(),
+        wishlistProvider.wishlist.length == 0 ? emptyWishlist() : content(),
       ],
     );
   }
