@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:toko_online/models/message_model.dart';
+import 'package:toko_online/models/product_model.dart';
+import 'package:toko_online/pages/detail_chat_page.dart';
 import 'package:toko_online/theme.dart';
 
 class ChatTile extends StatelessWidget {
+  final MessageModel message;
+  ChatTile(this.message);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/detail-chat');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailChatPage(
+              UninitializedProductModel(),
+            ),
+          ),
+        );
       },
       child: Container(
         margin: EdgeInsets.only(top: 33),
@@ -15,7 +28,7 @@ class ChatTile extends StatelessWidget {
             Row(
               children: [
                 Image.asset(
-                  'image_shop_logo.png',
+                  'assets/image_shop_logo.png',
                   width: 54,
                 ),
                 SizedBox(
@@ -26,13 +39,13 @@ class ChatTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Shope Store',
+                        'Shoe Store',
                         style: primaryTextStyle.copyWith(
                           fontSize: 15,
                         ),
                       ),
                       Text(
-                        'Good night, This items is on...',
+                        message.message,
                         style: secondaryTextStyle.copyWith(
                           fontWeight: light,
                         ),

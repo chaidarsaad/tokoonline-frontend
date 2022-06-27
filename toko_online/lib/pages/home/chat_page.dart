@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_online/models/message_model.dart';
+import 'package:toko_online/providers/auth_provider.dart';
+import 'package:toko_online/providers/page_provider.dart';
+import 'package:toko_online/services/message_service.dart';
 import 'package:toko_online/widgets/chat_tile.dart';
+
 import '../../theme.dart';
 
 class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget header() {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    PageProvider pageProvider = Provider.of<PageProvider>(context);
+
+    PreferredSizeWidget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
         centerTitle: true,
         title: Text(
           'Message Support',
-          style: priceTextStyle.copyWith(
+          style: primaryTextStyle.copyWith(
             fontSize: 18,
             fontWeight: medium,
           ),
@@ -27,16 +36,17 @@ class ChatPage extends StatelessWidget {
           width: double.infinity,
           color: backgroundColor3,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'icon_headset.png',
+                'assets/icon_headset.png',
                 width: 80,
               ),
               SizedBox(
                 height: 20,
               ),
               Text(
-                'Ops no message yet?',
+                'Opss no message yet?',
                 style: primaryTextStyle.copyWith(
                   fontSize: 16,
                   fontWeight: medium,
@@ -55,7 +65,9 @@ class ChatPage extends StatelessWidget {
               Container(
                 height: 44,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    pageProvider.currentIndex = 0;
+                  },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.symmetric(
                       horizontal: 24,
@@ -82,20 +94,33 @@ class ChatPage extends StatelessWidget {
     }
 
     Widget content() {
-      return Expanded(
-        child: Container(
-          width: double.infinity,
-          color: backgroundColor3,
-          child: ListView(
-            padding: EdgeInsets.symmetric(
-              horizontal: defaultMargin,
-            ),
-            children: [
-              ChatTile(),
-            ],
-          ),
-        ),
-      );
+      return StreamBuilder<List<MessageModel>>(
+          stream: MessageService()
+              .getMessagesByUserId(userId: authProvider.user.id),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              if (snapshot.data!.length == 0) {
+                return emptyChat();
+              }
+
+              return Expanded(
+                child: Container(
+                  width: double.infinity,
+                  color: backgroundColor3,
+                  child: ListView(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: defaultMargin,
+                    ),
+                    children: [
+                      ChatTile(snapshot.data![snapshot.data!.length - 1]),
+                    ],
+                  ),
+                ),
+              );
+            } else {
+              return emptyChat();
+            }
+          });
     }
 
     return Column(

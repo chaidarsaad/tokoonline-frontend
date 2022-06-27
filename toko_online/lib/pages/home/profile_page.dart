@@ -1,10 +1,9 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toko_online/models/user_model.dart';
 import 'package:toko_online/providers/auth_provider.dart';
-import 'package:toko_online/theme.dart';
+
+import '../../theme.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -12,7 +11,7 @@ class ProfilePage extends StatelessWidget {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
     UserModel user = authProvider.user;
 
-    Widget header() {
+    PreferredSizeWidget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
         automaticallyImplyLeading: false,
@@ -40,6 +39,7 @@ class ProfilePage extends StatelessWidget {
                       Text(
                         'Hallo, ${user.name}',
                         style: primaryTextStyle.copyWith(
+                          fontSize: 24,
                           fontWeight: semiBold,
                         ),
                       ),
@@ -58,7 +58,7 @@ class ProfilePage extends StatelessWidget {
                         context, '/sign-in', (route) => false);
                   },
                   child: Image.asset(
-                    'button_exit.png',
+                    'assets/button_exit.png',
                     width: 20,
                   ),
                 ),
@@ -126,7 +126,7 @@ class ProfilePage extends StatelessWidget {
                 'Help',
               ),
               SizedBox(
-                height: 10,
+                height: 30,
               ),
               Text(
                 'General',

@@ -1,5 +1,3 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unused_element
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toko_online/models/user_model.dart';
@@ -19,7 +17,10 @@ class HomePage extends StatelessWidget {
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
-            top: defaultMargin, left: defaultMargin, right: defaultMargin),
+          top: defaultMargin,
+          left: defaultMargin,
+          right: defaultMargin,
+        ),
         child: Row(
           children: [
             Expanded(
@@ -53,7 +54,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       );
@@ -100,7 +101,7 @@ class HomePage extends StatelessWidget {
                   border: Border.all(
                     color: subtitleColor,
                   ),
-                  color: Colors.transparent,
+                  color: transparentColor,
                 ),
                 child: Text(
                   'Running',
@@ -121,7 +122,7 @@ class HomePage extends StatelessWidget {
                   border: Border.all(
                     color: subtitleColor,
                   ),
-                  color: Colors.transparent,
+                  color: transparentColor,
                 ),
                 child: Text(
                   'Training',
@@ -142,10 +143,10 @@ class HomePage extends StatelessWidget {
                   border: Border.all(
                     color: subtitleColor,
                   ),
-                  color: Colors.transparent,
+                  color: transparentColor,
                 ),
                 child: Text(
-                  'Basket Ball',
+                  'Basketball',
                   style: subtitleTextStyle.copyWith(
                     fontSize: 13,
                     fontWeight: medium,
@@ -163,7 +164,7 @@ class HomePage extends StatelessWidget {
                   border: Border.all(
                     color: subtitleColor,
                   ),
-                  color: Colors.transparent,
+                  color: transparentColor,
                 ),
                 child: Text(
                   'Hiking',
@@ -209,7 +210,7 @@ class HomePage extends StatelessWidget {
               Row(
                 children: productProvider.products
                     .map(
-                        (product) => ProductCard(product),
+                      (product) => ProductCard(product),
                     )
                     .toList(),
               ),
@@ -245,7 +246,8 @@ class HomePage extends StatelessWidget {
           children: productProvider.products
               .map(
                 (product) => ProductTile(product),
-          ).toList(),
+              )
+              .toList(),
         ),
       );
     }

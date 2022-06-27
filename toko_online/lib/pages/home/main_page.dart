@@ -1,22 +1,22 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, avoid_print
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:toko_online/pages/home/chat_page.dart';
 import 'package:toko_online/pages/home/home_page.dart';
 import 'package:toko_online/pages/home/profile_page.dart';
 import 'package:toko_online/pages/home/wishlist_page.dart';
+import 'package:toko_online/providers/page_provider.dart';
 import 'package:toko_online/theme.dart';
 
 class MainPage extends StatefulWidget {
   @override
-  State<MainPage> createState() => _MainPageState();
+  _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-  int currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
+    PageProvider pageProvider = Provider.of<PageProvider>(context);
+
     Widget cartButton() {
       return FloatingActionButton(
         onPressed: () {
@@ -24,7 +24,7 @@ class _MainPageState extends State<MainPage> {
         },
         backgroundColor: secondaryColor,
         child: Image.asset(
-          'icon_cart.png',
+          'assets/icon_cart.png',
           width: 20,
         ),
       );
@@ -41,25 +41,25 @@ class _MainPageState extends State<MainPage> {
           clipBehavior: Clip.antiAlias,
           child: BottomNavigationBar(
             backgroundColor: backgroundColor4,
-            currentIndex: currentIndex,
+            currentIndex: pageProvider.currentIndex,
             onTap: (value) {
               print(value);
-              setState(() {
-                currentIndex = value;
-              });
+              pageProvider.currentIndex = value;
             },
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(
-                    top: 30,
+                    top: 20,
                     bottom: 10,
                   ),
                   child: Image.asset(
-                    'icon_home.png',
+                    'assets/icon_home.png',
                     width: 21,
-                    color: currentIndex == 0 ? primaryColor : Color(0xff808191),
+                    color: pageProvider.currentIndex == 0
+                        ? primaryColor
+                        : Color(0xff808191),
                   ),
                 ),
                 label: '',
@@ -67,13 +67,15 @@ class _MainPageState extends State<MainPage> {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(
-                    top: 30,
+                    top: 20,
                     bottom: 10,
                   ),
                   child: Image.asset(
-                    'icon_chat.png',
-                    width: 21,
-                    color: currentIndex == 1 ? primaryColor : Color(0xff808191),
+                    'assets/icon_chat.png',
+                    width: 20,
+                    color: pageProvider.currentIndex == 1
+                        ? primaryColor
+                        : Color(0xff808191),
                   ),
                 ),
                 label: '',
@@ -81,13 +83,15 @@ class _MainPageState extends State<MainPage> {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(
-                    top: 30,
+                    top: 20,
                     bottom: 10,
                   ),
                   child: Image.asset(
-                    'icon_wishlist.png',
-                    width: 21,
-                    color: currentIndex == 2 ? primaryColor : Color(0xff808191),
+                    'assets/icon_wishlist.png',
+                    width: 20,
+                    color: pageProvider.currentIndex == 2
+                        ? primaryColor
+                        : Color(0xff808191),
                   ),
                 ),
                 label: '',
@@ -95,13 +99,15 @@ class _MainPageState extends State<MainPage> {
               BottomNavigationBarItem(
                 icon: Container(
                   margin: EdgeInsets.only(
-                    top: 30,
+                    top: 20,
                     bottom: 10,
                   ),
                   child: Image.asset(
-                    'icon_profile.png',
-                    width: 21,
-                    color: currentIndex == 3 ? primaryColor : Color(0xff808191),
+                    'assets/icon_profile.png',
+                    width: 18,
+                    color: pageProvider.currentIndex == 3
+                        ? primaryColor
+                        : Color(0xff808191),
                   ),
                 ),
                 label: '',
@@ -113,7 +119,7 @@ class _MainPageState extends State<MainPage> {
     }
 
     Widget body() {
-      switch (currentIndex) {
+      switch (pageProvider.currentIndex) {
         case 0:
           return HomePage();
           break;
@@ -121,7 +127,7 @@ class _MainPageState extends State<MainPage> {
           return ChatPage();
           break;
         case 2:
-          return WishListPage();
+          return WishlistPage();
           break;
         case 3:
           return ProfilePage();
@@ -133,7 +139,8 @@ class _MainPageState extends State<MainPage> {
     }
 
     return Scaffold(
-      backgroundColor: currentIndex == 0 ? backgroundColor1 : backgroundColor3,
+      backgroundColor:
+          pageProvider.currentIndex == 0 ? backgroundColor1 : backgroundColor3,
       floatingActionButton: cartButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: customBottomNav(),

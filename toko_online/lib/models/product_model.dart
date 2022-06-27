@@ -2,15 +2,15 @@ import 'package:toko_online/models/category_model.dart';
 import 'package:toko_online/models/gallery_model.dart';
 
 class ProductModel {
-  late int id;
-  late String name;
-  late double price;
-  late String description;
-  late String tags;
-  late CategoryModel category;
-  late DateTime createdAt;
-  late DateTime updateAt;
-  late List<GalleryModel> galleries;
+  late final int id;
+  late final String name;
+  late final double price;
+  late final String description;
+  late final String tags;
+  late final CategoryModel category;
+  late final DateTime createdAt;
+  late final DateTime updatedAt;
+  late final List<GalleryModel> galleries;
 
   ProductModel({
     required this.id,
@@ -20,7 +20,7 @@ class ProductModel {
     required this.tags,
     required this.category,
     required this.createdAt,
-    required this.updateAt,
+    required this.updatedAt,
     required this.galleries,
   });
 
@@ -35,7 +35,7 @@ class ProductModel {
         .map<GalleryModel>((gallery) => GalleryModel.fromJson(gallery))
         .toList();
     createdAt = DateTime.parse(json['created_at']);
-    updateAt = DateTime.parse(json['update_at']);
+    updatedAt = DateTime.parse(json['updated_at']);
   }
 
   Map<String, dynamic> toJson() {
@@ -47,8 +47,10 @@ class ProductModel {
       'tags': tags,
       'category': category.toJson(),
       'galleries': galleries.map((gallery) => gallery.toJson()).toList(),
-      'createdAt': createdAt.toString(),
-      'updateAt': updateAt.toString(),
+      'created_at': createdAt.toString(),
+      'updated_at': updatedAt.toString(),
     };
   }
 }
+
+class UninitializedProductModel extends ProductModel {}

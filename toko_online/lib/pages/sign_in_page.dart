@@ -7,7 +7,7 @@ import 'package:toko_online/widgets/loading_button.dart';
 // ignore: use_key_in_widget_constructors
 class SignInPage extends StatefulWidget {
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  _SignInPageState createState() => _SignInPageState();
 }
 
 class _SignInPageState extends State<SignInPage> {
@@ -21,7 +21,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
 
-    handleSign() async {
+    handleSignIn() async {
       setState(() {
         isLoading = true;
       });
@@ -42,6 +42,7 @@ class _SignInPageState extends State<SignInPage> {
           ),
         );
       }
+
       setState(() {
         isLoading = false;
       });
@@ -49,7 +50,6 @@ class _SignInPageState extends State<SignInPage> {
 
     Widget header() {
       return Container(
-        // ignore: prefer_const_constructors
         margin: EdgeInsets.only(top: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,14 +61,13 @@ class _SignInPageState extends State<SignInPage> {
                 fontWeight: semiBold,
               ),
             ),
-            // ignore: prefer_const_constructors
             SizedBox(
               height: 2,
             ),
             Text(
-              'Sign In To Continue',
+              'Sign In to Continue',
               style: subtitleTextStyle,
-            )
+            ),
           ],
         ),
       );
@@ -76,7 +75,6 @@ class _SignInPageState extends State<SignInPage> {
 
     Widget emailInput() {
       return Container(
-        // ignore: prefer_const_constructors
         margin: EdgeInsets.only(top: 70),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,13 +86,11 @@ class _SignInPageState extends State<SignInPage> {
                 fontWeight: medium,
               ),
             ),
-            // ignore: prefer_const_constructors
             SizedBox(
               height: 12,
             ),
             Container(
               height: 50,
-              // ignore: prefer_const_constructors
               padding: EdgeInsets.symmetric(
                 horizontal: 16,
               ),
@@ -109,7 +105,6 @@ class _SignInPageState extends State<SignInPage> {
                       'assets/icon_email.png',
                       width: 17,
                     ),
-                    // ignore: prefer_const_constructors
                     SizedBox(
                       width: 16,
                     ),
@@ -126,7 +121,7 @@ class _SignInPageState extends State<SignInPage> {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       );
@@ -134,8 +129,7 @@ class _SignInPageState extends State<SignInPage> {
 
     Widget passwordInput() {
       return Container(
-        // ignore: prefer_const_constructors
-        margin: EdgeInsets.only(top: 30),
+        margin: EdgeInsets.only(top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -182,7 +176,7 @@ class _SignInPageState extends State<SignInPage> {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       );
@@ -194,14 +188,15 @@ class _SignInPageState extends State<SignInPage> {
         width: double.infinity,
         margin: EdgeInsets.only(top: 30),
         child: TextButton(
-          onPressed: handleSign,
+          onPressed: handleSignIn,
           style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              )),
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
           child: Text(
-            'Sign in',
+            'Sign In',
             style: primaryTextStyle.copyWith(
               fontSize: 16,
               fontWeight: medium,
@@ -213,13 +208,12 @@ class _SignInPageState extends State<SignInPage> {
 
     Widget footer() {
       return Container(
-        // ignore: prefer_const_constructors
         margin: EdgeInsets.only(bottom: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Don\'t Have Account?',
+              'Don\'t have an account? ',
               style: subtitleTextStyle.copyWith(
                 fontSize: 12,
               ),
@@ -228,11 +222,13 @@ class _SignInPageState extends State<SignInPage> {
               onTap: () {
                 Navigator.pushNamed(context, '/sign-up');
               },
-              child: Text('Sign Up',
-                  style: purpleTextStyle.copyWith(
-                    fontSize: 12,
-                    fontWeight: medium,
-                  )),
+              child: Text(
+                'Sign Up',
+                style: purpleTextStyle.copyWith(
+                  fontSize: 12,
+                  fontWeight: medium,
+                ),
+              ),
             ),
           ],
         ),
@@ -248,6 +244,7 @@ class _SignInPageState extends State<SignInPage> {
             horizontal: defaultMargin,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               header(),
               emailInput(),

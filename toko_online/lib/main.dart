@@ -1,23 +1,28 @@
-// ignore_for_file: use_key_in_widget_constructors
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toko_online/pages/cart_page.dart';
 import 'package:toko_online/pages/checkout_page.dart';
-import 'package:toko_online/pages/checkout_success.dart';
+import 'package:toko_online/pages/checkout_success.page.dart';
 import 'package:toko_online/pages/detail_chat_page.dart';
 import 'package:toko_online/pages/edit_profile_page.dart';
 import 'package:toko_online/pages/home/main_page.dart';
 import 'package:toko_online/pages/product_page.dart';
+import 'package:toko_online/pages/sign_in_page.dart';
 import 'package:toko_online/pages/sign_up_page.dart';
 import 'package:toko_online/pages/splash_page.dart';
-import 'package:toko_online/pages/sign_in_page.dart';
 import 'package:toko_online/providers/auth_provider.dart';
+import 'package:toko_online/providers/cart_provider.dart';
+import 'package:toko_online/providers/page_provider.dart';
 import 'package:toko_online/providers/product_provider.dart';
+import 'package:toko_online/providers/transaction_provider.dart';
 import 'package:toko_online/providers/wishlist_provider.dart';
-import 'package:toko_online/widgets/wishlist_card.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -28,9 +33,19 @@ class MyApp extends StatelessWidget {
           create: (context) => AuthProvider(),
         ),
         ChangeNotifierProvider(
-          create: (context)  => ProductProvider(),
+          create: (context) => ProductProvider(),
         ),
-        ChangeNotifierProvider(create:  (context) => WishlistProvider(),
+        ChangeNotifierProvider(
+          create: (context) => WishlistProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CartProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TransactionProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PageProvider(),
         ),
       ],
       child: MaterialApp(
@@ -40,7 +55,6 @@ class MyApp extends StatelessWidget {
           '/sign-in': (context) => SignInPage(),
           '/sign-up': (context) => SignUpPage(),
           '/home': (context) => MainPage(),
-          '/detail-chat': (context) => DetailChatPage(),
           '/edit-profile': (context) => EditProfilePage(),
           '/cart': (context) => CartPage(),
           '/checkout': (context) => CheckoutPage(),

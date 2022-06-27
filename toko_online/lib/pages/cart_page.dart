@@ -1,12 +1,14 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toko_online/providers/cart_provider.dart';
 import 'package:toko_online/theme.dart';
 import 'package:toko_online/widgets/cart_card.dart';
 
 class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
+
     PreferredSizeWidget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -52,7 +54,7 @@ class CartPage extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: () {
-                  Navigator.restorablePushNamedAndRemoveUntil(
+                  Navigator.pushNamedAndRemoveUntil(
                       context, '/home', (route) => false);
                 },
                 style: TextButton.styleFrom(
@@ -69,7 +71,7 @@ class CartPage extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       );
@@ -80,15 +82,17 @@ class CartPage extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: defaultMargin,
         ),
-        children: [
-          CartCard(),
-        ],
+        children: cartProvider.carts
+            .map(
+              (cart) => CartCard(cart),
+            )
+            .toList(),
       );
     }
 
-    Widget customBootmNav() {
+    Widget customBottomNav() {
       return Container(
-        height: 185,
+        height: 180,
         child: Column(
           children: [
             Container(
@@ -103,7 +107,7 @@ class CartPage extends StatelessWidget {
                     style: primaryTextStyle,
                   ),
                   Text(
-                    '\$287,96',
+                    '\$${cartProvider.totalPrice()}',
                     style: priceTextStyle.copyWith(
                       fontSize: 16,
                       fontWeight: semiBold,
@@ -116,7 +120,7 @@ class CartPage extends StatelessWidget {
               height: 30,
             ),
             Divider(
-              thickness: 0.5,
+              thickness: 0.3,
               color: subtitleColor,
             ),
             SizedBox(
@@ -157,7 +161,7 @@ class CartPage extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       );
@@ -166,8 +170,9 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor3,
       appBar: header(),
-      body: content(),
-      bottomNavigationBar: customBootmNav(),
+      body: cartProvider.carts.length == 0 ? emptyCart() : content(),
+      bottomNavigationBar:
+          cartProvider.carts.length == 0 ? SizedBox() : customBottomNav(),
     );
   }
 }

@@ -1,5 +1,3 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, empty_statements
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toko_online/providers/auth_provider.dart';
@@ -8,7 +6,7 @@ import 'package:toko_online/widgets/loading_button.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
 class _SignUpPageState extends State<SignUpPage> {
@@ -49,6 +47,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         );
       }
+
       setState(() {
         isLoading = false;
       });
@@ -71,233 +70,229 @@ class _SignUpPageState extends State<SignUpPage> {
               height: 2,
             ),
             Text(
-              'Register and happy shopping',
+              'Register and Happy Shoping',
               style: subtitleTextStyle,
-            )
+            ),
           ],
         ),
       );
     }
 
-    ;
-
     Widget nameInput() {
       return Container(
-          margin: EdgeInsets.only(top: 50),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Full Name',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium,
-                ),
+        margin: EdgeInsets.only(top: 50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Full Name',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
               ),
-              SizedBox(
-                height: 12,
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 50,
+              padding: EdgeInsets.symmetric(
+                horizontal: 16,
               ),
-              Container(
-                height: 50,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                ),
-                decoration: BoxDecoration(
-                  color: backgroundColor2,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/icon_name.png',
-                        width: 17,
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          style: primaryTextStyle,
-                          controller: nameController,
-                          decoration: InputDecoration.collapsed(
-                            hintText: 'Your Full Name',
-                            hintStyle: subtitleTextStyle,
-                          ),
+              decoration: BoxDecoration(
+                color: backgroundColor2,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icon_name.png',
+                      width: 17,
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        style: primaryTextStyle,
+                        controller: nameController,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Your Full Name',
+                          hintStyle: subtitleTextStyle,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ));
+              ),
+            ),
+          ],
+        ),
+      );
     }
-
-    ;
 
     Widget usernameInput() {
       return Container(
-          margin: EdgeInsets.only(top: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Username',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium,
-                ),
+        margin: EdgeInsets.only(top: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Username',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
               ),
-              SizedBox(
-                height: 12,
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 50,
+              padding: EdgeInsets.symmetric(
+                horizontal: 16,
               ),
-              Container(
-                height: 50,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                ),
-                decoration: BoxDecoration(
-                  color: backgroundColor2,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/icon_username.png',
-                        width: 17,
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          style: primaryTextStyle,
-                          controller: usernameController,
-                          decoration: InputDecoration.collapsed(
-                            hintText: 'Your Username',
-                            hintStyle: subtitleTextStyle,
-                          ),
+              decoration: BoxDecoration(
+                color: backgroundColor2,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icon_username.png',
+                      width: 17,
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        style: primaryTextStyle,
+                        controller: usernameController,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Your Username',
+                          hintStyle: subtitleTextStyle,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ));
+              ),
+            ),
+          ],
+        ),
+      );
     }
-
-    ;
 
     Widget emailInput() {
       return Container(
-          margin: EdgeInsets.only(top: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Email Address',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium,
-                ),
+        margin: EdgeInsets.only(top: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Email Address',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
               ),
-              SizedBox(
-                height: 12,
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 50,
+              padding: EdgeInsets.symmetric(
+                horizontal: 16,
               ),
-              Container(
-                height: 50,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                ),
-                decoration: BoxDecoration(
-                  color: backgroundColor2,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/icon_email.png',
-                        width: 17,
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          style: primaryTextStyle,
-                          controller: emailController,
-                          decoration: InputDecoration.collapsed(
-                            hintText: 'Your Email Address',
-                            hintStyle: subtitleTextStyle,
-                          ),
+              decoration: BoxDecoration(
+                color: backgroundColor2,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icon_email.png',
+                      width: 17,
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        style: primaryTextStyle,
+                        controller: emailController,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Your Email Address',
+                          hintStyle: subtitleTextStyle,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ));
+              ),
+            ),
+          ],
+        ),
+      );
     }
-
-    ;
 
     Widget passwordInput() {
       return Container(
-          margin: EdgeInsets.only(top: 70),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Password',
-                style: primaryTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium,
-                ),
+        margin: EdgeInsets.only(top: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Password',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
               ),
-              SizedBox(
-                height: 12,
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 50,
+              padding: EdgeInsets.symmetric(
+                horizontal: 16,
               ),
-              Container(
-                height: 50,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                ),
-                decoration: BoxDecoration(
-                  color: backgroundColor2,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/icon_password.png',
-                        width: 17,
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          style: primaryTextStyle,
-                          controller: passwordController,
-                          obscureText: true,
-                          decoration: InputDecoration.collapsed(
-                            hintText: 'Your Password',
-                            hintStyle: subtitleTextStyle,
-                          ),
+              decoration: BoxDecoration(
+                color: backgroundColor2,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icon_password.png',
+                      width: 17,
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        style: primaryTextStyle,
+                        obscureText: true,
+                        controller: passwordController,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Your Password',
+                          hintStyle: subtitleTextStyle,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ));
+              ),
+            ),
+          ],
+        ),
+      );
     }
 
     Widget signUpButton() {
@@ -308,10 +303,11 @@ class _SignUpPageState extends State<SignUpPage> {
         child: TextButton(
           onPressed: handleSignUp,
           style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              )),
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
           child: Text(
             'Sign Up',
             style: primaryTextStyle.copyWith(
@@ -330,7 +326,7 @@ class _SignUpPageState extends State<SignUpPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Already Have Account?',
+              'Already have an account? ',
               style: subtitleTextStyle.copyWith(
                 fontSize: 12,
               ),
@@ -339,11 +335,13 @@ class _SignUpPageState extends State<SignUpPage> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Text('Sign In',
-                  style: purpleTextStyle.copyWith(
-                    fontSize: 12,
-                    fontWeight: medium,
-                  )),
+              child: Text(
+                'Sign In',
+                style: purpleTextStyle.copyWith(
+                  fontSize: 12,
+                  fontWeight: medium,
+                ),
+              ),
             ),
           ],
         ),
@@ -359,6 +357,7 @@ class _SignUpPageState extends State<SignUpPage> {
             horizontal: defaultMargin,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               header(),
               nameInput(),

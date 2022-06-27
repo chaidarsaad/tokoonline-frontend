@@ -1,10 +1,10 @@
 class UserModel {
-  int id = 15;
-  String name = "name";
-  String email = "email";
-  String username = "username";
-  String profilePhotoUrl = "profilePhotoUrl";
-  String token = "token";
+  late final int id;
+  late final String name;
+  late final String email;
+  late final String username;
+  late final String profilePhotoUrl;
+  late final String token;
 
   UserModel({
     required this.id,

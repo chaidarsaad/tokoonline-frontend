@@ -1,6 +1,6 @@
 class GalleryModel {
-  int id = 15;
-  String url = "url";
+  late int id;
+  late String url;
 
   GalleryModel({
     required this.id,
@@ -9,8 +9,9 @@ class GalleryModel {
 
   GalleryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    url = json['name'];
+    url = json['url'];
   }
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,

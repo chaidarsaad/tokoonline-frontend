@@ -1,6 +1,6 @@
 class CategoryModel {
-  int id = 15;
-  String name = "name";
+  late int id;
+  late String name;
 
   CategoryModel({
     required this.id,
@@ -11,6 +11,7 @@ class CategoryModel {
     id = json['id'];
     name = json['name'];
   }
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,

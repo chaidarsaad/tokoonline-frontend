@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "309461170568",
+    "project_id": "sport-station-26e5c",
+    "storage_bucket": "sport-station-26e5c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309461170568:android:603828712891f5b744a23d",
+        "android_client_info": {
+          "package_name": "com.TA.toko_online"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309461170568-j9ufjl8cglv1060uaoe2lghq7teskglr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZqHMv3Kx8aj9Da3z83gCdmsp6Qp-GYzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309461170568-j9ufjl8cglv1060uaoe2lghq7teskglr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

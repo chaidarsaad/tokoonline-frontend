@@ -1,18 +1,18 @@
-// ignore_for_file: use_key_in_widget_constructors, unnecessary_const
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toko_online/providers/page_provider.dart';
 import 'package:toko_online/providers/wishlist_provider.dart';
-import 'package:toko_online/theme.dart';
 import 'package:toko_online/widgets/wishlist_card.dart';
 
-class WishListPage extends StatelessWidget {
+import '../../theme.dart';
+
+class WishlistPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
+    PageProvider pageProvider = Provider.of<PageProvider>(context);
 
-    Widget header() {
+    PreferredSizeWidget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
         centerTitle: true,
@@ -33,14 +33,14 @@ class WishListPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'image_wishlist.png',
+                'assets/image_wishlist.png',
                 width: 74,
               ),
               SizedBox(
                 height: 23,
               ),
               Text(
-                'You don\'t have dream shoes?',
+                ' You don\'t have dream shoes?',
                 style: primaryTextStyle.copyWith(
                   fontSize: 16,
                   fontWeight: medium,
@@ -59,13 +59,15 @@ class WishListPage extends StatelessWidget {
               Container(
                 height: 44,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    pageProvider.currentIndex = 0;
+                  },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.symmetric(
                       vertical: 10,
                       horizontal: 24,
                     ),
-                    backgroundColor: priceColor,
+                    backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -87,19 +89,20 @@ class WishListPage extends StatelessWidget {
 
     Widget content() {
       return Expanded(
-          child: Container(
-        color: backgroundColor3,
-        child: ListView(
-          padding: EdgeInsets.symmetric(
-            horizontal: defaultMargin,
+        child: Container(
+          color: backgroundColor3,
+          child: ListView(
+            padding: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
+            ),
+            children: wishlistProvider.wishlist
+                .map(
+                  (product) => WishlistCard(product),
+                )
+                .toList(),
           ),
-          children: wishlistProvider.wishlist
-              .map(
-                (product) => WishlistCard(product),
-              )
-              .toList(),
         ),
-      ));
+      );
     }
 
     return Column(
